@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Video2GIF</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
@@ -38,9 +38,7 @@ color: #fff;
 QFrame{
  border: none;
 }
-QCheckBox{
-color: #fff;
-}
+
 
 QPushButton{
 border-radius: 5px;
@@ -58,9 +56,17 @@ border-left: 1px solid red;
 QTextEdit{
 background-color: rgb(255,255,255);
 border: 1px solid blue;
+color: black;
 }
-QCheckBox::indicator{
-background-color: rgb(255,255,255);
+
+QCheckBox{
+color: white;
+}
+QCheckBox::indicator:checked{
+background-color: red;
+}
+QCheckBox::indicator:unchecked{
+background-color: white;
 }
 QSpinBox{
 
@@ -351,16 +357,16 @@ background-color: rgb(154, 153, 150);
                        <number>0</number>
                       </property>
                       <item>
-                       <widget class="QSpinBox" name="spinBox">
+                       <widget class="QSpinBox" name="fps_spin">
                         <property name="minimumSize">
                          <size>
-                          <width>50</width>
+                          <width>60</width>
                           <height>0</height>
                          </size>
                         </property>
                         <property name="maximumSize">
                          <size>
-                          <width>50</width>
+                          <width>60</width>
                           <height>30</height>
                          </size>
                         </property>
@@ -574,7 +580,7 @@ background-color: rgb(154, 153, 150);
                           <widget class="QTextEdit" name="width_txt">
                            <property name="maximumSize">
                             <size>
-                             <width>50</width>
+                             <width>60</width>
                              <height>30</height>
                             </size>
                            </property>
@@ -667,7 +673,7 @@ background-color: rgb(154, 153, 150);
                           <widget class="QTextEdit" name="height_txt">
                            <property name="maximumSize">
                             <size>
-                             <width>50</width>
+                             <width>60</width>
                              <height>30</height>
                             </size>
                            </property>
@@ -751,6 +757,9 @@ background-color: rgb(154, 153, 150);
                       </property>
                       <item>
                        <widget class="QSlider" name="start_slider">
+                        <property name="pageStep">
+                         <number>1</number>
+                        </property>
                         <property name="orientation">
                          <enum>Qt::Horizontal</enum>
                         </property>
@@ -758,6 +767,9 @@ background-color: rgb(154, 153, 150);
                       </item>
                       <item>
                        <widget class="QSlider" name="stop_slider">
+                        <property name="pageStep">
+                         <number>1</number>
+                        </property>
                         <property name="orientation">
                          <enum>Qt::Horizontal</enum>
                         </property>
@@ -817,6 +829,27 @@ background-color: rgb(154, 153, 150);
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_22">
+          <item>
+           <widget class="QFrame" name="frame">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_21">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+              <widget class="QLabel" name="img_label">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item alignment="Qt::AlignLeft">
@@ -854,7 +887,7 @@ border: 1px solid gray;
       <property name="maximumSize">
        <size>
         <width>16777215</width>
-        <height>70</height>
+        <height>75</height>
        </size>
       </property>
       <property name="styleSheet">
@@ -913,7 +946,7 @@ border: 1px solid gray;
               <number>0</number>
              </property>
              <property name="leftMargin">
-              <number>320</number>
+              <number>314</number>
              </property>
              <property name="topMargin">
               <number>0</number>
@@ -980,7 +1013,11 @@ border: 1px solid gray;
                     </widget>
                    </item>
                    <item>
-                    <widget class="QTextEdit" name="source_txt"/>
+                    <widget class="QTextEdit" name="source_txt">
+                     <property name="readOnly">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </widget>
@@ -1093,7 +1130,11 @@ border: 1px solid gray;
                     </widget>
                    </item>
                    <item>
-                    <widget class="QTextEdit" name="destination_txt"/>
+                    <widget class="QTextEdit" name="destination_txt">
+                     <property name="readOnly">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </widget>
