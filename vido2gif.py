@@ -29,6 +29,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.browse_destination_btn.clicked.connect(self.browse_destination_file)
         self.start_slider.sliderMoved.connect(self.start_slider_value_changed)
         self.stop_slider.sliderMoved.connect(self.stop_slider_value_changed)
+        self.start_slider.sliderPressed.connect(self.start_slider_value_changed)
+        self.stop_slider.sliderPressed.connect(self.stop_slider_value_changed)
 
 
     @QtCore.pyqtSlot(bool)
