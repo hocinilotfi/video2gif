@@ -54,6 +54,9 @@ class Ui_MainWindow(object):
 "border-left: 1px solid red;\n"
 "\n"
 "}\n"
+"QProgressBar{\n"
+"border-radius: 5px;\n"
+"}\n"
 "QTextEdit{\n"
 "background-color: rgb(255,255,255);\n"
 "border: 1px solid blue;\n"
@@ -368,7 +371,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_22.addWidget(self.frame)
         self.horizontalLayout_10.addWidget(self.right_side_frame_1)
         self.right_side_frame_2 = QtWidgets.QFrame(self.middle_frame)
-        self.right_side_frame_2.setMinimumSize(QtCore.QSize(35, 0))
+        self.right_side_frame_2.setMinimumSize(QtCore.QSize(40, 0))
         self.right_side_frame_2.setMaximumSize(QtCore.QSize(35, 16777215))
         self.right_side_frame_2.setStyleSheet("#frame_13{\n"
 "border: 1px solid gray;\n"
@@ -376,7 +379,18 @@ class Ui_MainWindow(object):
         self.right_side_frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.right_side_frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.right_side_frame_2.setObjectName("right_side_frame_2")
-        self.horizontalLayout_10.addWidget(self.right_side_frame_2, 0, QtCore.Qt.AlignLeft)
+        self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.right_side_frame_2)
+        self.verticalLayout_10.setObjectName("verticalLayout_10")
+        self.progressBar = QtWidgets.QProgressBar(self.right_side_frame_2)
+        self.progressBar.setEnabled(True)
+        self.progressBar.setProperty("value", 20)
+        self.progressBar.setAlignment(QtCore.Qt.AlignCenter)
+        self.progressBar.setTextVisible(True)
+        self.progressBar.setOrientation(QtCore.Qt.Vertical)
+        self.progressBar.setTextDirection(QtWidgets.QProgressBar.TopToBottom)
+        self.progressBar.setObjectName("progressBar")
+        self.verticalLayout_10.addWidget(self.progressBar)
+        self.horizontalLayout_10.addWidget(self.right_side_frame_2)
         self.verticalLayout.addWidget(self.middle_frame)
         self.buttom_bar = QtWidgets.QFrame(self.centralwidget)
         self.buttom_bar.setMaximumSize(QtCore.QSize(16777215, 75))
@@ -501,7 +515,7 @@ class Ui_MainWindow(object):
         self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_5.setObjectName("frame_5")
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.frame_5)
-        self.horizontalLayout_7.setContentsMargins(-1, -1, 35, -1)
+        self.horizontalLayout_7.setContentsMargins(-1, -1, 45, -1)
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
         self.convert_btn = QtWidgets.QPushButton(self.frame_5)
         self.convert_btn.setObjectName("convert_btn")
@@ -516,7 +530,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Video2GIF"))
-        self.label.setText(_translate("MainWindow", "Video to Gif Converter"))
+        self.label.setText(_translate("MainWindow", "Easy Video to Gif Converter"))
         self.groupBox_3.setTitle(_translate("MainWindow", "Frames Per Second"))
         self.label_4.setText(_translate("MainWindow", "      FPS:"))
         self.groupBox_2.setTitle(_translate("MainWindow", "Image Size"))
@@ -525,6 +539,7 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "Height:"))
         self.groupBox.setTitle(_translate("MainWindow", "Trimming"))
         self.play_btn.setText(_translate("MainWindow", "Play"))
+        self.progressBar.setFormat(_translate("MainWindow", "%p"))
         self.label_5.setText(_translate("MainWindow", "         Source:"))
         self.browse_source_btn.setText(_translate("MainWindow", "..."))
         self.label_6.setText(_translate("MainWindow", "Destination:"))

@@ -53,6 +53,9 @@ background-color: rgb(59, 103, 128);
 border-left: 1px solid red;
 
 }
+QProgressBar{
+border-radius: 5px;
+}
 QTextEdit{
 background-color: rgb(255,255,255);
 border: 1px solid blue;
@@ -143,7 +146,7 @@ QSpinBox{
              </font>
             </property>
             <property name="text">
-             <string>Video to Gif Converter</string>
+             <string>Easy Video to Gif Converter</string>
             </property>
            </widget>
           </item>
@@ -852,11 +855,11 @@ background-color: rgb(154, 153, 150);
          </layout>
         </widget>
        </item>
-       <item alignment="Qt::AlignLeft">
+       <item>
         <widget class="QFrame" name="right_side_frame_2">
          <property name="minimumSize">
           <size>
-           <width>35</width>
+           <width>40</width>
            <height>0</height>
           </size>
          </property>
@@ -877,6 +880,33 @@ border: 1px solid gray;
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
+         <layout class="QVBoxLayout" name="verticalLayout_10">
+          <item>
+           <widget class="QProgressBar" name="progressBar">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="value">
+             <number>20</number>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="textVisible">
+             <bool>true</bool>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="textDirection">
+             <enum>QProgressBar::TopToBottom</enum>
+            </property>
+            <property name="format">
+             <string>%p</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
@@ -1219,7 +1249,7 @@ border: 1px solid gray;
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_7">
           <property name="rightMargin">
-           <number>35</number>
+           <number>45</number>
           </property>
           <item>
            <widget class="QPushButton" name="convert_btn">

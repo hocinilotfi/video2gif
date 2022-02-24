@@ -25,6 +25,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.destination_file_name= ""
         
         self.drawing = False
+        self.progressBar.setVisible(False)
+        self.keep_ratio_btn.setChecked(True)
+        self.height_txt.setEnabled(False)
        
 
 
@@ -157,6 +160,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.y0_cv_image = self.y0 * self.height_scale
             self.x1_cv_image = self.x1 * self.width_scale
             self.y1_cv_image = self.y1 * self.height_scale
+            
+          
+            
             f= self.frame.copy()
             f = cv2.rectangle(f, (self.x0_cv_image,self.y0_cv_image), (self.x1_cv_image,self.y1_cv_image), color = (0, 0, 255), thickness=2)
             pixmap = opencv_frame_to_pixmap(f)
@@ -166,6 +172,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             print("mouving 2 : ", self.x1_cv_image, self.y1_cv_image )
             
     def keyPressEvent(self, event):
+        #not yet used
 
         if event.key() == 16777249: #if control key pressed
             #print('CTR key pressed')
@@ -173,10 +180,48 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         #print('pressed from MainWindow: ', event.key())
 
     def keyReleaseEvent(self, event):
+        #not yet used 
         if event.key() == 16777249:
             self.ctr_is_pressed = False
             print('ctr key released')
+    
+    def convert(self):
+        
+        if self.x1_cv_image < 0: self.x1_cv_image = 0
+        if self.x1_cv_image > self.video_intitial_width: self.x1_cv_image = self.video_intitial_width   
+        if self.y1_cv_image < 0: self.y1_cv_image = 0
+        if self.y1_cv_image > self.video_intitial_height: self.y1_cv_image = self.video_intitial_height
+        
+        ouput_properties={
+            "fps": self.fps_spin.value(),
+            "width": int(self.width_txt.text()),
+            "height":int(self.height_txt.text()),
+            "initial": self.start_slider.value(),
+            "final": self.stop_slider.value(),
+            "x0":self.x0_cv_image,
+            "y0": self.y0_cv_image,
+            "x1":self.x1_cv_image,
+            "y1": self.y1_cv_image,
+            "source_file_name":self.source_file_name,
+            "destination_file_name": self.destination_file_name          
+        }
+            
 
+        
+class Convertion_thread(QtCore.QThread):
+    # Create a counter thread
+    def set_output_properties(self, output_properties):
+        pass
+    change_value = QtCore.pyqtSignal(int)
+    def run(self):
+        cnt = 0
+        while cnt < 100:
+            cnt+=1
+            self.change_value.emit(cnt)
+            
+    def stop(self):
+        self.thread_is_active = False
+        self.quit()
 
 
       
